@@ -16,6 +16,7 @@
         <input formControlName="passwordConfirmation" />
     </div>
     {{authForm.get('passwordConfirmation')?.errors | json}}
+    {{authForm.errors | json}}
 
     <button class="ui submit button primary">
         Submit
