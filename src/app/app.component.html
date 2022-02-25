@@ -1,6 +1,9 @@
 <div class="ui container">
   <div class="ui secondary pointing large menu">
-    <a routerLink="/" class="item">Angular Authentication App</a>
+    <div class="ui  segment">
+        <a routerLink="/" class="ui red ribbon label header">Angular Authentication App</a>
+    </div>
+    <a  class="item header"></a>
     <div class="right menu">
       <ng-container *ngIf="signedin$ | async">
         <a class="ui item" routerLink="/dashboard" routerLinkActive="active">
