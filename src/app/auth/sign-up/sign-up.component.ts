@@ -48,7 +48,7 @@ export class SignUpComponent implements OnInit {
 
   showErrors(control: any) {
     const { dirty, touched, errors } = control;
-    return dirty && touched && errors;
+    return  (dirty || touched) && errors;
   }
 
   onSubmit() {

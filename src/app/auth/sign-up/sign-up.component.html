@@ -1,68 +1,77 @@
-<div class="ui container" style="margin-top:3em;">
-    <h3>Create an Account</h3>
-    <form  class="ui form" [formGroup]="authForm" (ngSubmit)="onSubmit()">
-        <div class="field">
-            <label>Username</label>
-            <input formControlName="username" />
-        </div>
-        <div *ngIf="showErrors(authForm.get('username'))" class="ui pointing red basic label">
-            <p *ngIf="authForm.get('username')?.errors?.['required']">
-                Value is required.
-            </p>
-            <p *ngIf="authForm.get('username')?.errors?.['minlength']">
-                Username should have atleast 3 characters.
-            </p>
-            <p *ngIf="authForm.get('username')?.errors?.['pattern']">
-               Invalid format.
-            </p>
-            <p *ngIf="authForm.get('username')?.errors?.['nonUniqueUsername']">
-                Username is taken.
-            </p>
-            <p *ngIf="authForm.get('username')?.errors?.['connectionError']">
-            Can't tell if username is taken.
-            </p>
-        </div>
-        <div class="field">
-            <label>Password</label>
-            <input formControlName="password" />
-        </div>
-        <div *ngIf="showErrors(authForm.get('password'))" class="ui pointing red basic label">
-            <p *ngIf="authForm.get('password')?.errors?.['required']">
-                Value is required.
-            </p>
-            <p *ngIf="authForm.get('password')?.errors?.['minlength']">
-                password should have atleast 4 characters.
-            </p>
-        </div>
-    
-        <div class="field">
-            <label>Password Confirmation</label>
-            <input formControlName="passwordConfirmation" />
-        </div>
-        
-        <div *ngIf="showErrors(authForm.get('passwordConfirmation'))" class="ui pointing red basic label">
-            <p *ngIf="authForm.get('passwordConfirmation')?.errors?.['required']">
-                Value is required.
-            </p>
-            <p *ngIf="authForm.get('passwordConfirmation')?.errors?.['minlength']">
-                passwordConfirmation should have atleast 4 characters.
-            </p>
-        </div>
-        <br/>
-        <div *ngIf="authForm.errors" class="ui red basic label">
-            <p *ngIf="authForm.errors?.['passwordsDontMatch']">
-                Password and Password Confirmation must match
-            </p>
-            <p *ngIf="authForm.errors?.['noConnection']">
-                Sorry, can't connect to server.
-            </p>
-            <p *ngIf="authForm.errors?.['unknownError']">
-                Failed to sign up.
-            </p>
-        </div> 
-        <br/> 
-        <button class="ui submit button primary">
-            Submit
-        </button>
-    </form>
+<div
+  class="ui raised very padded text container segment"
+  style="margin-top: 3em"
+>
+  <h2 class="ui horizontal divider header">Create an Account</h2>
+  <form class="ui form" [formGroup]="authForm" (ngSubmit)="onSubmit()">
+    <div class="field">
+      <label>Username</label>
+      <input formControlName="username" />
+      <div
+        *ngIf="showErrors(authForm.get('username'))"
+        class="ui pointing red basic label"
+      >
+        <p *ngIf="authForm.get('username')?.errors?.['required']">
+          Value is required.
+        </p>
+        <p *ngIf="authForm.get('username')?.errors?.['minlength']">
+          Username should have atleast 3 characters.
+        </p>
+        <p *ngIf="authForm.get('username')?.errors?.['pattern']">
+          Invalid format.
+        </p>
+        <p *ngIf="authForm.get('username')?.errors?.['nonUniqueUsername']">
+          Username is taken.
+        </p>
+        <p *ngIf="authForm.get('username')?.errors?.['noConnection']">
+          Can't tell if username is taken.
+        </p>
+      </div>
+    </div>
+    <div class="field">
+      <label>Password</label>
+      <input formControlName="password" />
+      <div
+        *ngIf="showErrors(authForm.get('password'))"
+        class="ui pointing red basic label"
+      >
+        <p *ngIf="authForm.get('password')?.errors?.['required']">
+          Value is required.
+        </p>
+        <p *ngIf="authForm.get('password')?.errors?.['minlength']">
+          password should have atleast 4 characters.
+        </p>
+      </div>
+    </div>
+
+    <div class="field">
+      <label>Password Confirmation</label>
+      <input formControlName="passwordConfirmation" />
+      <div
+        *ngIf="showErrors(authForm.get('passwordConfirmation'))"
+        class="ui pointing red basic label"
+      >
+        <p *ngIf="authForm.get('passwordConfirmation')?.errors?.['required']">
+          Value is required.
+        </p>
+        <p *ngIf="authForm.get('passwordConfirmation')?.errors?.['minlength']">
+          passwordConfirmation should have atleast 4 characters.
+        </p>
+      </div>
+    </div>
+
+    <div *ngIf="authForm.errors" class="ui red basic label">
+      <p *ngIf="authForm.errors?.['passwordsDontMatch']">
+        Password and Password Confirmation must match
+      </p>
+      <p *ngIf="authForm.errors?.['noConnection']">
+        Sorry, can't connect to server.
+      </p>
+      <p *ngIf="authForm.errors?.['unknownError']">Failed to sign up.</p>
+    </div>
+
+    <div>
+      <button class="ui submit button primary">Submit</button>
+    </div>
+  </form>
 </div>

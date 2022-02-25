@@ -1,15 +1,4 @@
-.basic.label{
+.ui.basic.label{
     margin-bottom: 0.5em;
 }
 
-button {
-    margin-bottom: 0.5em;
-}
-
-.field{
-    margin-bottom: 0.5em;
-}
-
-form{
-    padding:2em;
-}

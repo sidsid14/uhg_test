@@ -1,36 +1,42 @@
-<div class="ui container" style="margin-top: 3em">
-  <h3>Sign In</h3>
+<div
+  class="ui raised very padded text container segment"
+  style="margin-top: 3em"
+>
+  <h2 class="ui horizontal divider header">Sign In</h2>
   <form class="ui form" [formGroup]="authForm" (ngSubmit)="onSubmit()">
     <div class="field">
       <label>Username</label>
       <input formControlName="username" />
+      <div
+        *ngIf="showErrors(authForm.get('username'))"
+        class="ui pointing red basic label"
+      >
+        <p *ngIf="authForm.get('username')?.errors?.['required']">
+          Value is required.
+        </p>
+      </div>
     </div>
-    <div
-      *ngIf="showErrors(authForm.get('username'))"
-      class="ui pointing red basic label"
-    >
-      <p *ngIf="authForm.get('username')?.errors?.['required']">
-        Value is required.
-      </p>
-    </div>
+
     <div class="field">
       <label>Password</label>
       <input type="password" formControlName="password" />
+      <div
+        *ngIf="showErrors(authForm.get('password'))"
+        class="ui pointing red basic label"
+      >
+        <p *ngIf="authForm.get('password')?.errors?.['required']">
+          Value is required.
+        </p>
+      </div>
     </div>
-    <div
-      *ngIf="showErrors(authForm.get('password'))"
-      class="ui pointing red basic label"
-    >
-      <p *ngIf="authForm.get('password')?.errors?.['required']">
-        Value is required.
+
+    <div *ngIf="authForm.errors" class="ui red basic label">
+      <p *ngIf="authForm.errors?.['credentials']">
+        Invalid username or password
       </p>
     </div>
-    <div *ngIf="authForm.errors" class="ui red basic label">
-        <p *ngIf="authForm.errors?.['credentials']">
-            Invalid username or password
-        </p>
-    </div> 
-    <br />
-    <button class="ui submit button primary">Submit</button>
+    <div>
+        <button class="ui submit button primary">Submit</button>
+    </div>
   </form>
 </div>
