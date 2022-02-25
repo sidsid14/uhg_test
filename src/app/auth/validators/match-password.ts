@@ -9,7 +9,7 @@ export class MatchPassword implements Validator {
             if (password === passwordConfirmation) {
               return null;
             } else {
-              return { paswordsDontMatch: true };
+              return { passwordsDontMatch: true };
             }
     }
 }
