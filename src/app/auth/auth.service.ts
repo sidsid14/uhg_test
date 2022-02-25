@@ -12,7 +12,17 @@ interface SignUpCredentials {
   confirmPassword: string;
 }
 
+interface SignInCredentials{
+  username: string;
+  password: string;
+}
+
 interface SignUpResponse {
+  username: string;
+}
+
+interface SignedinResponse {
+  authenticated: boolean;
   username: string;
 }
 
@@ -36,9 +46,7 @@ export class AuthService {
 
   signup(credentials: SignUpCredentials) {
     return this.http
-      .post<SignUpResponse>(`${this.rootUrl}/auth/signup`, credentials, {
-        withCredentials: true,
-      })
+      .post<SignUpResponse>(`${this.rootUrl}/auth/signup`, credentials)
       .pipe(
         tap(() => {
           this.signedin$.next(true);
@@ -48,12 +56,30 @@ export class AuthService {
 
   checkAuth() {
     return this.http
-      .get(`${this.rootUrl}/auth/signedin`, {
-        withCredentials: true,
-      })
+      .get<SignedinResponse>(`${this.rootUrl}/auth/signedin`)
       .pipe(
-        tap((response) => {
-          console.log(response);
+        tap(({authenticated}) => {
+          this.signedin$.next(authenticated);
+        })
+      );
+  }
+
+  signout(){
+    return this.http
+    .post(`${this.rootUrl}/auth/signout`, {})
+    .pipe(
+      tap(() => {
+        this.signedin$.next(false);
+      })
+    );
+  }
+
+  signin(credentials: SignInCredentials) {
+    return this.http
+      .post<SignInCredentials>(`${this.rootUrl}/auth/signin`, credentials)
+      .pipe(
+        tap(() => {
+          this.signedin$.next(true);
         })
       );
   }
