@@ -1,8 +1,5 @@
-<div
-  class="ui raised very padded text container segment"
-  style="margin-top: 3em"
->
-  <h2 class="ui horizontal divider header">Sign In</h2>
+<app-container>
+  <header>Sign In</header>
   <form class="ui form" [formGroup]="authForm" (ngSubmit)="onSubmit()">
     <div class="field">
       <label>Username</label>
@@ -36,7 +33,8 @@
       </p>
     </div>
     <div>
-        <button class="ui submit button primary">Submit</button>
+      <button class="ui submit button primary">Submit</button>
     </div>
   </form>
-</div>
+</app-container>
+
