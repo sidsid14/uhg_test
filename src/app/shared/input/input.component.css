@@ -1,0 +1,8 @@
+.ui.basic.label{
+    margin-bottom: 0.5em;
+}
+
+:host{
+    display: block;
+    margin-bottom: 1em;
+}

@@ -1,61 +1,20 @@
 <app-container>
   <header>Create An Account</header>
   <form class="ui form" [formGroup]="authForm" (ngSubmit)="onSubmit()">
-    <div class="field">
-      <label>Username</label>
-      <input formControlName="username" />
-      <div
-        *ngIf="showErrors(authForm.get('username'))"
-        class="ui pointing red basic label"
-      >
-        <p *ngIf="authForm.get('username')?.errors?.['required']">
-          Value is required.
-        </p>
-        <p *ngIf="authForm.get('username')?.errors?.['minlength']">
-          Username should have atleast 3 characters.
-        </p>
-        <p *ngIf="authForm.get('username')?.errors?.['pattern']">
-          Invalid format.
-        </p>
-        <p *ngIf="authForm.get('username')?.errors?.['nonUniqueUsername']">
-          Username is taken.
-        </p>
-        <p *ngIf="authForm.get('username')?.errors?.['noConnection']">
-          Can't tell if username is taken.
-        </p>
-      </div>
-    </div>
-    <div class="field">
-      <label>Password</label>
-      <input formControlName="password" />
-      <div
-        *ngIf="showErrors(authForm.get('password'))"
-        class="ui pointing red basic label"
-      >
-        <p *ngIf="authForm.get('password')?.errors?.['required']">
-          Value is required.
-        </p>
-        <p *ngIf="authForm.get('password')?.errors?.['minlength']">
-          password should have atleast 4 characters.
-        </p>
-      </div>
-    </div>
-
-    <div class="field">
-      <label>Password Confirmation</label>
-      <input formControlName="passwordConfirmation" />
-      <div
-        *ngIf="showErrors(authForm.get('passwordConfirmation'))"
-        class="ui pointing red basic label"
-      >
-        <p *ngIf="authForm.get('passwordConfirmation')?.errors?.['required']">
-          Value is required.
-        </p>
-        <p *ngIf="authForm.get('passwordConfirmation')?.errors?.['minlength']">
-          passwordConfirmation should have atleast 4 characters.
-        </p>
-      </div>
-    </div>
+    <app-input
+      label="Username"
+      [control]="toControl(authForm.get('username'))"
+    ></app-input>
+    <app-input
+      label="Password"
+      inputType="password"
+      [control]="toControl(authForm.get('password'))"
+    ></app-input>
+    <app-input
+      label="Password Confirmation"
+      inputType="password"
+      [control]="toControl(authForm.get('passwordConfirmation'))"
+    ></app-input>
 
     <div *ngIf="authForm.errors" class="ui red basic label">
       <p *ngIf="authForm.errors?.['passwordsDontMatch']">

@@ -8,10 +8,16 @@ import { AbstractControl, FormControl } from '@angular/forms';
 })
 export class InputComponent implements OnInit {
   @Input() label:string = '';
-  @Input() control:AbstractControl | null = null;
+  @Input() control:FormControl = new FormControl();
+  @Input() inputType:string = 'text';
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  showErrors(){
+    const {dirty, touched, errors} = this.control;
+    return (dirty || touched) && errors;
   }
 
 }
