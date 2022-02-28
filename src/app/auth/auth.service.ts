@@ -31,7 +31,7 @@ interface SignedinResponse {
 })
 export class AuthService {
   rootUrl: string = 'https://api.angular-email.com';
-  signedin$ = new BehaviorSubject(false);
+  signedin$:any = new BehaviorSubject(null);
 
   constructor(private http: HttpClient) {}
 
