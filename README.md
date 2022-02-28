@@ -12,27 +12,28 @@ This project should do the following-
 ## Application Features
 
 1. Sign Up Page -
-   - Use of resuable input component.
-   - Validation for required, minlength, maxlength, passwordMatch.
-   - Async validation if the username exists.
-   - Receive JWT token as a cookie parameter which is retained for further requests using interceptors withCredentials parameter.
+   - Use of **Reactive Forms**.
+   - Use of **resuable** input component.
+   - Use of **Validators** Validation for required, minlength, maxlength.
+   - Use of **Custom Validator** for passwordMatch.
+   - Use of **Async Validator** for async validation if the username exists in backend.
+   - Receive JWT token as a cookie parameter which is retained for further requests using **Interceptors** withCredentials parameter.
    - On successful sign up redirecting user to Dashboard page.
    - Displaying error in case of network not reachable.
-   - Use of Reactive Forms.
    - This page is hidden after the user is authenticated.
 2. Sign In Page -
    - Use of reusable input component.
    - Validation for required fields.
-   - Displaying error in case of incorrect username/password or network not reachable.
+   - Displaying error in case of incorrect username/password or network not reachable.`
    - On successful sign in redirecting user to Dashboard page.
    - Use of Reactive Forms.
    - This page is hidden after the user is authenticated.
 3. Authentication Service -
-   - Global service for making http requests.
-   - Holds interfaces for possible respones.
+   - Global **Service** for making http requests.
+   - Holds **Interfaces** for possible respones.
    - Make requests for signup, signin, signedin, signout
 4. Dashboard Page -
-   - Protected lazy load module using canLoad routeGuard.
+   - Protected **lazy load module** using **canLoad** routeGuard.
    - Unauthenticated user is redirected to login page.
    - Displays placeholder component.
    - This page is hidden after the user is not authenticated.
@@ -46,11 +47,11 @@ This project should do the following-
 
 |      Path      | Method |                                     Body                                     |                      Description                      |
 | :------------: | :----: | :--------------------------------------------------------------------------: | :---------------------------------------------------: |
-|  /auth/signup  |  POST  | { usernamue: String,<br/>password:String,<br/>passwordConfirmation: String } | Signs up for a new account with the provided username |
-|  /auth/signin  |  POST  |                  { username: String,<br/>password: String }                  |          Signs in with the provided username          |
-| /auth/username |  POST  |                             { username: String }                             |     Checks to see if a username is already in use     |
+|  /auth/signup  |  POST  | ```{ usernamue: String, password:String, passwordConfirmation: String }``` | Signs up for a new account with the provided username |
+|  /auth/signin  |  POST  |                  ```{ username: String, password: String }```                  |          Signs in with the provided username          |
+| /auth/username |  POST  |                             ```{ username: String }```                             |     Checks to see if a username is already in use     |
 | /auth/signedid |  GET   |                                                                              |   Checks to see if the user is currently signed in    |
-| /auth/signout  |  POST  |                                      {}                                      |                  Signs the user out                   |
+| /auth/signout  |  POST  |                                      ```{}```                                      |                  Signs the user out                   |
 
 ## Development server
 
