@@ -32,7 +32,8 @@ This project should do the following-
    - Holds interfaces for possible respones.
    - Make requests for signup, signin, signedin, signout
 4. Dashboard Page -
-   - Lazy loaded module
+   - Protected lazy load module using canLoad routeGuard.
+   - Unauthenticated user is redirected to login page.
    - Displays placeholder component.
    - This page is hidden after the user is not authenticated.
 5. NotFound Page -
