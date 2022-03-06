@@ -1,5 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { AbstractControl, FormControl, FormGroup } from '@angular/forms';
+import {
+  AbstractControl,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { Email } from '../email';
 
 @Component({
@@ -15,10 +20,10 @@ export class EmailFormComponent implements OnInit {
   ngOnInit(): void {
     const { subject, to, from, text } = this.email;
     this.emailForm = new FormGroup({
-      to: new FormControl(to),
-      from: new FormControl(from),
-      subject: new FormControl(subject),
-      text: new FormControl(text),
+      to: new FormControl(to, [Validators.required, Validators.email]),
+      from: new FormControl({ value: from, disabled: true }),
+      subject: new FormControl(subject, [Validators.required]),
+      text: new FormControl(text, [Validators.required]),
     });
   }
 
