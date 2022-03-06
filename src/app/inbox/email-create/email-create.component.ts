@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/auth/auth.service';
 import { Email } from '../email';
 
 @Component({
@@ -9,11 +10,11 @@ import { Email } from '../email';
 export class EmailCreateComponent implements OnInit {
   showModal: boolean = false;
   email: Email;
-  constructor() {
+  constructor(private authService: AuthService) {
     this.email = {
       id: '',
       to: '',
-      from: 'sudhanshu@angular-email.com',
+      from: `${authService.username}@angular-email.com`,
       subject: '',
       html: '',
       text: '',
