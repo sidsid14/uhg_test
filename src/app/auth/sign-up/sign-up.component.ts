@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
+import {
+  AbstractControl,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 import { MatchPassword } from '../validators/match-password';
@@ -20,8 +25,8 @@ export class SignUpComponent implements OnInit {
           Validators.minLength(3),
           Validators.maxLength(20),
           Validators.pattern(/^[a-z0-9]+$/),
-        ]
-        ,[this.uniqueUsername.validate]
+        ],
+        [this.uniqueUsername.validate]
       ),
       password: new FormControl('', [
         Validators.required,
@@ -53,7 +58,7 @@ export class SignUpComponent implements OnInit {
 
   showErrors(control: any) {
     const { dirty, touched, errors } = control;
-    return  (dirty || touched) && errors;
+    return (dirty || touched) && errors;
   }
 
   onSubmit() {
@@ -63,12 +68,12 @@ export class SignUpComponent implements OnInit {
 
     this.authService.signup(this.authForm.value).subscribe({
       next: (response) => {
-        this.router.navigateByUrl('/dashboard');
+        this.router.navigateByUrl('/inbox');
       },
       error: (err) => {
         if (!err.status) {
           this.authForm.setErrors({ noConnection: true });
-        }else{
+        } else {
           this.authForm.setErrors({ unknownError: true });
         }
       },

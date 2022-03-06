@@ -1,20 +1,27 @@
 <div class="ui container mt-1">
   <div class="ui secondary pointing large menu">
     <div class="ui segment brand">
-        <a routerLink="/" class="ui red ribbon label header">Angular Authentication App</a>
+      <a routerLink="/" class="ui red ribbon label header"
+        >Angular Authentication App</a
+      >
     </div>
-    
+
     <div class="right menu">
       <ng-container *ngIf="signedin$ | async">
-        <a class="ui item" routerLink="/dashboard" routerLinkActive="active">
-          Dashboard
+        <a class="ui item" routerLink="/inbox" routerLinkActive="active">
+          Inbox
         </a>
         <a class="ui item" routerLink="/signout" routerLinkActive="active">
           Sign Out
         </a>
       </ng-container>
       <ng-container *ngIf="!(signedin$ | async)">
-        <a class="ui item" routerLink="/" [routerLinkActiveOptions]="{exact:true}" routerLinkActive="active">
+        <a
+          class="ui item"
+          routerLink="/"
+          [routerLinkActiveOptions]="{ exact: true }"
+          routerLinkActive="active"
+        >
           Sign In
         </a>
         <a class="ui item" routerLink="/signup" routerLinkActive="active">

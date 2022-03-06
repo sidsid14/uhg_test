@@ -5,15 +5,15 @@ import { NotFoundComponent } from './not-found/not-found.component';
 
 const routes: Routes = [
   {
-    path: 'dashboard',
+    path: 'inbox',
     canLoad: [AuthGuard],
     loadChildren: () =>
-      import('./dashboard/dashboard.module').then((mod) => mod.DashboardModule),
+      import('./inbox/inbox.module').then((mod) => mod.InboxModule),
   },
   {
-    path: "**",
-    component: NotFoundComponent
-  }
+    path: '**',
+    component: NotFoundComponent,
+  },
 ];
 
 @NgModule({
