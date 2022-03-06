@@ -1,0 +1,29 @@
+<form class="ui form" [formGroup]="emailForm">
+  <app-input
+    label="To"
+    inputType="email"
+    [control]="toControl(emailForm.get('to'))"
+  ></app-input>
+
+  <app-input
+    label="From"
+    inputType="email"
+    [control]="toControl(emailForm.get('from'))"
+  ></app-input>
+
+  <app-input
+    label="Subject"
+    inputType="text"
+    [control]="toControl(emailForm.get('subject'))"
+  ></app-input>
+
+  <app-input
+    label="Content"
+    inputType="text"
+    [control]="toControl(emailForm.get('text'))"
+  ></app-input>
+
+  <div>
+    <button class="ui button primary">Send</button>
+  </div>
+</form>
