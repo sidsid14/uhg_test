@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import {
   AbstractControl,
   FormControl,
@@ -14,6 +14,8 @@ import { Email } from '../email';
 })
 export class EmailFormComponent implements OnInit {
   @Input() email!: Email;
+  @Output() emailSubmit: EventEmitter<Email> = new EventEmitter();
+
   emailForm!: FormGroup;
   constructor() {}
 
@@ -30,5 +32,14 @@ export class EmailFormComponent implements OnInit {
   toControl(absCtrl: AbstractControl | null): FormControl {
     const ctrl = absCtrl as FormControl;
     return ctrl;
+  }
+
+  onSubmit() {
+    if (this.emailForm.invalid) {
+      return;
+    }
+
+    this.emailSubmit.emit(this.emailForm.value);
+    // console.log(this.emailForm.getRawValue());
   }
 }
